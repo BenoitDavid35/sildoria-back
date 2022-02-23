@@ -179,7 +179,7 @@ var queryString = 'CREATE TABLE IF NOT EXISTS `building_upgrades` (' +
   '`intra_system` varchar(5) NOT NULL,' +
   '`building` VARCHAR(32) NOT NULL,' +
   '`level` tinyint(4) NOT NULL,' +
-  '`start_timestamp` int(11) NOT NULL' +
+  '`start_timestamp` int(11) NOT NULL,' +
   '`end_timestamp` int(11) NOT NULL' +
 ')'
 // console.log(queryString);
@@ -193,7 +193,7 @@ var queryString = 'CREATE TABLE IF NOT EXISTS `technologies_upgrades` (' +
   '`intra_system` varchar(5) NOT NULL,' +
   '`technology` VARCHAR(32) NOT NULL,' +
   '`level` tinyint(4) NOT NULL,' +
-  '`start_timestamp` int(11) NOT NULL' +
+  '`start_timestamp` int(11) NOT NULL,' +
   '`end_timestamp` int(11) NOT NULL' +
 ')'
 // console.log(queryString);
@@ -252,8 +252,8 @@ db.connection.query(queryString ,function(err, rows) {
 });
 
 var queryString = 'CREATE TABLE IF NOT EXISTS `user_fleets` (' +
-  '`fleet_ID` INT NOT NULL AUTO_INCREMENT,' +
-  '`fleet_name` varchar(64) NOT NULL'
+  '`fleet_ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,' +
+  '`fleet_name` varchar(64) NOT NULL,' +
   '`user_id` int(11) NOT NULL,' +
   '`solar_system` varchar(5) NOT NULL,' +
   '`intra_system` varchar(5) NOT NULL,' +
@@ -284,7 +284,7 @@ var queryString = 'CREATE TABLE IF NOT EXISTS `user_fleets` (' +
   '`recycling_ship` int(11) NOT NULL,' +
   '`hunter_carrier` int(11) NOT NULL,' +
   '`shield_destructor` int(11) NOT NULL,' +
-  '`boarding_vessel` int(11) NOT NULL,' +
+  '`boarding_vessel` int(11) NOT NULL' +
 ')';
 // console.log(queryString);
 db.connection.query(queryString ,function(err, rows) {
