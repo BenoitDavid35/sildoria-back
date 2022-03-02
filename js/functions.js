@@ -16,7 +16,10 @@ async function logIn(login,pwd,callback){
   'JOIN telluric t on u.id = t.owner ' +
   'WHERE u.Sila_ID = ? AND u.password = ?';
   db.connection.query(queryString, [login,pwd], function(err, rows) {
-    if (err) callback(err,null);
+    if (err) {
+      console.log(err);
+      callback(err,null)
+    };
     // console.log(rows);
     callback(null,rows);
   });
@@ -179,6 +182,7 @@ async function createAccount(account_parameters,callback){
                     'WHERE `solar_system` = ? ' +
                     'AND `intra_system` = ?';
 
+                    console.log(row);
                     var solar_system = row.solar_system;
                     var intra_system = row.intra_system;
 
@@ -298,7 +302,7 @@ async function createAccount(account_parameters,callback){
           });
         }
 
-        async function generateNewControlCenterLine(user_id,solar_system,intra_system){
+        async function generateNewControlCenterLine(user_id,solar_system,intra_system,callback){
           var queryString = 'INSERT INTO `user_units_levels`(`user_id`, `solar_system`,' +
           '`intra_system`, `laser_turret`, `photon_turret`, `ion_turret`, `plasma_turret`,' +
           '`gauss_turret`, `neutron_turret`, `antimatter_turret`, `small_shield`,' +
@@ -326,7 +330,7 @@ async function createAccount(account_parameters,callback){
             });
           }
 
-          async function generateNewUnitEntityLine(user_id,solar_system,intra_system){
+          async function generateNewUnitEntityLine(user_id,solar_system,intra_system,callback){
             var queryString = 'INSERT INTO `user_units_entities`(`user_id`, `solar_system`,' +
             '`intra_system`, `laser_turret`, `photon_turret`, `ion_turret`, `plasma_turret`,' +
             '`gauss_turret`, `neutron_turret`, `antimatter_turret`, `small_shield`,' +
